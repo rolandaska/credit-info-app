@@ -1,51 +1,38 @@
 const express = require("express");
-const fs = require("fs");
-
 const app = express();
 
-const personData = fs.readFileSync(
-  `${__dirname}/data/person-data.json`,
-  "utf-8"
-);
-const personDataObj = JSON.parse(personData);
+// @require all mocked json data
+const personDataObj = require(`${__dirname}/data/person-data.json`);
+const affordabilityDataObj = require(`${__dirname}/data/affordability-data.json`);
+const exposureDataObj = require(`${__dirname}/data/exposure-data.json`);
 
-const affordabilityData = fs.readFileSync(
-  `${__dirname}/data/affordability-data.json`,
-  "utf-8"
-);
-const affordabilityDataObj = JSON.parse(affordabilityData);
-
-const exposureData = fs.readFileSync(
-  `${__dirname}/data/exposure-data.json`,
-  "utf-8"
-);
-const exposureDataObj = JSON.parse(exposureData);
-
+// @route     GET person/
+// @desc      Get person by id
+// @access    Public
 app.get("/person/:id", (req, res) => {
   const req_id = Number(req.params.id);
-  res.writeHead(200, { "Content-Type": "application/json" });
-  const response = JSON.stringify(
-    personDataObj.find((person) => person.id === req_id)
-  );
-  res.end(response);
+  const response = personDataObj.find((person) => person.id === req_id);
+  res.json(response);
 });
 
+// @route     GET affordability/
+// @desc      Get affordability by affordability_id found in route: person/id
+// @access    Public
 app.get("/affordability/:id", (req, res) => {
   const req_id = Number(req.params.id);
-  res.writeHead(200, { "Content-Type": "application/json" });
-  const response = JSON.stringify(
-    affordabilityDataObj.find((item) => item.affordability_id === req_id)
+  const response = affordabilityDataObj.find(
+    (item) => item.affordability_id === req_id
   );
-  res.end(response);
+  res.json(response);
 });
 
+// @route     GET exposure/
+// @desc      Get exposure by exposure_id, found in route: affordability/id
+// @access    Public
 app.get("/exposure/:id", (req, res) => {
   const req_id = Number(req.params.id);
-  res.writeHead(200, { "Content-Type": "application/json" });
-  const response = JSON.stringify(
-    exposureDataObj.find((item) => item.id === req_id)
-  );
-  res.end(response);
+  const response = exposureDataObj.find((item) => item.id === req_id);
+  res.json(response);
 });
 
 const PORT = process.env.PORT || 5000;

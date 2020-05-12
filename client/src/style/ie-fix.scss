@@ -1,0 +1,21 @@
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+button,
+input {
+    box-shadow: none !important;
+    border: none;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}

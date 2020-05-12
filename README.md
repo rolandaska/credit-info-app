@@ -14,9 +14,11 @@ You will also see any lint errors in the console.
 
 It will start the server only and will provide relevant api's for the app.<br />
 
-### `GET "/person/id"`
-### `GET "/affordability/id"`
-### `GET "/exposure/id"`
+```
+GET "/person/id"
+GET "/affordability/id"
+GET "/exposure/id"
+```
 
 ### `npm run client`
 

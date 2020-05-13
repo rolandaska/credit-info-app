@@ -6,7 +6,6 @@ import {
 const initialState = {
     loading: true,
     error: '',
-    // personAffId: "",  //to be removed if not needed
     affordability: { affordabilityMin: '', affordabilityMax: '' },
 };
 

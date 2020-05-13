@@ -9,10 +9,10 @@ export const getPersonInfo = (id) => async (dispatch) => {
   try {
     // @desc GET Personal data
     dispatch({ type: GET_PERSON_INFO_REQUEST });
-    const resPerosonInfo = await axios.get(`/person/${id}`);
+    const res = await axios.get(`/person/${id}`);
     dispatch({
       type: GET_PERSON_INFO_SUCCESS,
-      payload: resPerosonInfo.data,
+      payload: res.data,
     });
   } catch (err) {
     dispatch({

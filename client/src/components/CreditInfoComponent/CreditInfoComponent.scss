@@ -1,0 +1,14 @@
+@import './../../style/vars.scss';
+
+.overlay-container {
+    padding: 50px;
+    background-color: $dark-blue;
+    border-radius: 0 0 4px 4px;
+    font-size: 18px;
+    color: white;
+    .border-box {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid white;
+    }
+}

@@ -1,0 +1,14 @@
+@import './../../style/vars.scss';
+
+.input-primary {
+    input {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 140px;
+        height: 35px;
+        border-radius: 3px;
+        border: 1px solid $grey;
+        background: white;
+        padding: 0 5px;
+    }
+}

@@ -1,17 +1,17 @@
 [
-  {
-    "affordability_id": 1,
-    "affordability_max": { "value": 5, "exposure_id": 1 },
-    "affordability_min": { "value": 1.3, "exposure_id": 2 }
-  },
-  {
-    "affordability_id": 2,
-    "affordability_max": { "value": 7.4, "exposure_id": 1 },
-    "affordability_min": { "value": 5, "exposure_id": 2 }
-  },
-  {
-    "affordability_id": 3,
-    "affordability_max": { "value": 9, "exposure_id": 1 },
-    "affordability_min": { "value": 7.4, "exposure_id": 2 }
-  }
+    {
+        "affordability_id": 1,
+        "affordability_max": { "value": 2, "exposure_id": 1 },
+        "affordability_min": { "value": 1.3, "exposure_id": 2 }
+    },
+    {
+        "affordability_id": 2,
+        "affordability_max": { "value": 2.4, "exposure_id": 1 },
+        "affordability_min": { "value": 2, "exposure_id": 2 }
+    },
+    {
+        "affordability_id": 3,
+        "affordability_max": { "value": 3, "exposure_id": 1 },
+        "affordability_min": { "value": 2.4, "exposure_id": 2 }
+    }
 ]

@@ -12,7 +12,11 @@ const exposureDataObj = require(`${__dirname}/data/exposure-data.json`);
 app.get("/person/:id", (req, res) => {
   const req_id = Number(req.params.id);
   const response = personDataObj.find((person) => person.id === req_id);
-  res.json(response);
+  if (!response) {
+    res.status(404).send("Person with provided id was not found.");
+  } else {
+    res.json(response);
+  }
 });
 
 // @route     GET affordability/

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { calculatedAffRating } from '../functional/calculatedAffordabilityRating';
-import './CreditInfoComponent.scss';
-import Error from './../../ui/Error';
+import './CreditInfoResult.scss';
+import Error from '../../ui/Error';
 
 const CreditInfoComponent = () => {
     const { personInfo, error } = useSelector(

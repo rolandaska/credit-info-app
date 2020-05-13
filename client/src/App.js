@@ -3,26 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPersonInfo } from './actions/getPersonInfo-action.js';
 import { getAffordabilityById } from './actions/getAffordability-action';
 import { getExposureValues } from './actions/getExposure-action';
-import './App.scss';
 import Spinner from './ui/Spinner';
-import { calculatedAffRating } from './components/calculatedAffordabilityRating';
-import Input from './components/Input';
+import Input from './components/Input/Input';
+import CreditInfoComponent from './components/CreditInfoComponent/CreditInfoComponent';
+import Button from './components/Button/Button';
+import './App.scss';
 
 const App = () => {
     const dispatch = useDispatch();
-    const { personAffId, personInfo, loading } = useSelector(
+    const { personAffId, loading } = useSelector(
         (state) => state.getPersonInfoReducer
     );
-    const { affordability } = useSelector(
-        (state) => state.getAffordabilityReducer
-    );
-    const { exposureValues } = useSelector((state) => state.getExposureReducer);
 
-    const getPersonInfoHandler = () => {
-        if (personInfo.id !== Number(personId)) {
-            dispatch(getPersonInfo(personId));
+    const [currentPersonId, setCurrentPersonId] = useState('');
+    const [sendRequest, setSendRequest] = useState('');
+
+    useEffect(() => {
+        if (sendRequest) {
+            dispatch(getPersonInfo(sendRequest));
         }
-    };
+    }, [sendRequest, dispatch]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,47 +35,36 @@ const App = () => {
         fetchData();
     }, [personAffId, dispatch]);
 
-    const [personId, setPersonId] = useState('');
     return (
-        <>
-            <h1>App</h1>
-            <Input
-                required
-                type="text"
-                maxLength="10"
-                name="personId"
-                placeholder="Type Person ID"
-                onChange={(e) => setPersonId(e.target.value)}
-            />
-
-            <button
-                disabled={!/^[0-9\b]+$/.test(personId)}
-                onClick={getPersonInfoHandler}
-            >
-                Get Person Rate
-            </button>
-
+        <div className="App">
+            <h1 className="blue flex-center">Credit Score Calculator</h1>
+            <h2 className="dark-blue flex-center">DEMO ( existing person id's: 0, 1, 2 )</h2>
+            <div className="calculate-container mt-2 flex-center">
+                <Input
+                    required
+                    type="text"
+                    maxLength="10"
+                    name="currentPersonId"
+                    placeholder="Type Person ID"
+                    onChange={(e) => setCurrentPersonId(e.target.value)}
+                    className="input-primary mr-1"
+                />
+                <Button
+                    disabled={!/^[0-9\b]+$/.test(currentPersonId)}
+                    onClick={() => setSendRequest(currentPersonId)}
+                    title="Calculate"
+                    className="btn-primary"
+                />
+            </div>
             {loading ? (
-                <Spinner />
-            ) : (
-                <div>
-                    <div>
-                        Person Info: {personInfo.name} {personInfo.last_name}
-                    </div>
-                    <div>
-                        Affordability range: {affordability.affordabilityMin},
-                        {affordability.affordabilityMax}
-                    </div>
-                    <div>
-                        Affordability rating:
-                        {calculatedAffRating(
-                            affordability.affordabilityMin,
-                            exposureValues
-                        )}
-                    </div>
+                <div className="flex-center">
+                    <Spinner />
                 </div>
+            ) : (
+                <CreditInfoComponent />
             )}
-        </>
+        </div>
     );
 };
+
 export default App;

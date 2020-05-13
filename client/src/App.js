@@ -38,9 +38,9 @@ const App = () => {
     return (
         <div className="App">
             <h1 className="blue flex-center">Credit Score Calculator</h1>
-            <h2 className="dark-blue flex-center">
+            <h4 className="dark-blue flex-center">
                 DEMO ( existing person id's: 0, 1, 2 )
-            </h2>
+            </h4>
             <div className="calculate-container mt-2 flex-center">
                 <Input
                     required

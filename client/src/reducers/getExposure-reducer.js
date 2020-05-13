@@ -6,7 +6,7 @@ import {
 const initialState = {
     loading: true,
     error: '',
-    exposureValues: false,
+    exposureValues: [],
 };
 
 export default function (state = initialState, action) {

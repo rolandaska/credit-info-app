@@ -25,7 +25,7 @@ const App = () => {
     }, [personAffId, dispatch]);
 
     const title1 = 'Credit Score Calculator';
-    const title2 = "DEMO ( existing person id's: 0, 1, 2 )";
+    const title2 = "DEMO ID's: 0, 1, 2";
 
     return (
         <div className="App">
